@@ -7,25 +7,25 @@ export const protectRoute = async (req, res, next) => {
 
     const token = req.cookies?.jwt; // safer check
     if (!token) {
-      res.status(401).json({ message: "Unauthorized: No token provided" });
+      console.log("error in token")
     }
 
     // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (!decoded?.userId) {
-      res.status(401).json({ message: "Unauthorized: Invalid token" });
+     console.log("erro in invalid token")
     }
 
     // Fetch user from database
     const user = await User.findById(decoded.userId).select("-password");
     if (!user) {
-      res.status(404).json({ message: "User not found" });
+  console.log("user not found")
     }
 
     req.user = user; // attach user to request
     next();
   } catch (error) {
     console.error("ProtectRoute error:", error.message);
-    res.status(500).json({ message: "Internal server error" });
+    
   }
 };
