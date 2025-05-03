@@ -16,7 +16,7 @@ app.use(cookieparser());
 
 const allowedOrigins = [
   'http://localhost:5173', // for local development
-  'https://chat-app-8-e6qp.onrender.com' // for deployed frontend
+  'https://vercel-deployment-black-eight.vercel.app' // for deployed frontend
 ];
 
 app.use(cors({
