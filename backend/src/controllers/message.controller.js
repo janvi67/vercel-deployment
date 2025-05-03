@@ -90,7 +90,7 @@ export const deleteMessage = async (req, res) => {
     });
 
     if (!message) {
-      return res
+      res
         .status(400)
         .json({ error: "Message not found or not authorized " });
     }
@@ -132,13 +132,13 @@ export const deleteAllMessages = async (req, res) => {
     console.log("🚀 ~ deleteAllMessages ~ deleteResult:", deleteResult)
     if (deleteResult.length===0) {
       console.log("no message to delete");
-      return res
+      res
         .status(400)
         .json({ message: "No message are found to delete" });
     }
     else{
       console.log("sucess delete all messages")
-      return res
+      res
       .status(200)
       .json({ message: "All messages deleted successfully" });
     }
@@ -149,6 +149,6 @@ export const deleteAllMessages = async (req, res) => {
    
   } catch (error) {
     console.error("Error while deleting messages:", error);
-    return res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
