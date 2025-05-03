@@ -30,7 +30,8 @@ app.use(cors({
   credentials: true, // if you're using cookies or sessions
 }));
 
-
+app.get("/", (req, res) => {
+  res.send("✅ Hello from Express!");});
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
