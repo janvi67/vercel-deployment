@@ -295,7 +295,7 @@ import { io } from "socket.io-client";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const socket = io("http://localhost:3000", { transports: ["websocket"] });
+const socket = io("https://vercel-deployment-dvp2o9fnp-raychura-janvis-projects.vercel.app", { transports: ["websocket"] });
 
 const configuration = {
   iceServers: [
