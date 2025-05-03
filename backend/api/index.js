@@ -1,10 +1,10 @@
 import express from "express";
-import authRoutes from "./routes/auth.routes.js";
-import messageRoutes from "./routes/message.routes.js";
+import authRoutes from "../src/routes/auth.routes.js";
+import messageRoutes from "../src/routes/message.routes.js";
 import dotenv from "dotenv";
-import { connectDB } from "./lib/db.js";
+import { connectDB } from "../src/lib/db.js";
 import cookieparser from "cookie-parser";
-import { app, server } from "./lib/socket.js";
+import { app, server } from "../src/lib/socket.js";
 import cors from "cors";
 import path from "path";
 
