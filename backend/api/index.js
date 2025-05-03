@@ -15,23 +15,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieparser());
 
 const allowedOrigins = [
-  'http://localhost:5173', // for local development
-  'https://vercel-deployment-black-eight.vercel.app' // for deployed frontend
+  "https://vercel-deployment-black-eight.vercel.app", // for deployed frontend
 ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // if you're using cookies or sessions
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // if you're using cookies or sessions
+  })
+);
 
 app.get("/", (req, res) => {
-  res.send("✅ Hello from Express!");});
+  res.send("✅ Hello from Express!");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
